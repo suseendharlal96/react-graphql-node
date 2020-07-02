@@ -23,11 +23,10 @@ module.exports.validateSignupInput = (
   if (email.trim() === "") {
     errors.email = "Email must not be empty";
   } else {
-    // const regEx =
-    //   "/^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$/";
-    // if (!regEx.match(email)) {
-    //   errors.email = "Not a valid email";
-    // }
+    const regEx = /^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$/;
+    if (!regEx.match(email)) {
+      errors.email = "Not a valid email";
+    }
   }
 
   return {
@@ -40,6 +39,11 @@ module.exports.validateSigninInput = (email, password) => {
   const errors = {};
   if (email.trim() === "") {
     errors.email = "Email must not be empty";
+  } else {
+    const regEx = /^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$/;
+    if (!regEx.match(email)) {
+      errors.email = "Not a valid email";
+    }
   }
 
   if (password.trim() === "") {
